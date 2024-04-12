@@ -8,6 +8,15 @@ static struct proc_dir_entry *entry;
 
 static int proc_count(struct seq_file *m, void *v){
 	// TODO: it's all yours
+	struct task_struct *p;
+
+	pr_info("starting process\n");
+	int sum = 0;
+	for_each_process(p){
+		sum += 1;
+	}
+	pr_info("Total processes: %d\n", sum);
+	seq_printf(m, "%d\n", sum);
 	return 0;
 }
 
